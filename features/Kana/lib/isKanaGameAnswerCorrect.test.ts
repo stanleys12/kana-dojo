@@ -1,5 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { isKanaGameAnswerCorrect } from './isKanaGameAnswerCorrect';
+import { flattenKanaGroups } from './flattenKanaGroup';
+import { kana } from '../data/kana';
 
 const shi = { kana: 'し', romaji: 'shi', altRomanji: ['si'] };
 const a = { kana: 'あ', romaji: 'a', altRomanji: [] };
@@ -28,6 +30,19 @@ describe('isKanaGameAnswerCorrect', () => {
     expect(isKanaGameAnswerCorrect(dzi, 'ji', false)).toBe(true);
     expect(isKanaGameAnswerCorrect(dzu, 'du', false)).toBe(true);
     expect(isKanaGameAnswerCorrect(dzu, 'zu', false)).toBe(true);
+  });
+
+  it('accepts alternative yoon spellings from the kana data', () => {
+    const jyIndex = kana.findIndex(group => group.groupName === 'h.y.jy');
+    const [ja] = flattenKanaGroups([jyIndex]);
+    expect(isKanaGameAnswerCorrect(ja, 'jya', false)).toBe(true);
+    expect(isKanaGameAnswerCorrect(ja, 'zya', false)).toBe(true);
+    expect(isKanaGameAnswerCorrect(ja, 'zy', false)).toBe(false);
+
+    const chyIndex = kana.findIndex(group => group.groupName === 'h.y.chy');
+    const [cha] = flattenKanaGroups([chyIndex]);
+    expect(isKanaGameAnswerCorrect(cha, 'tya', false)).toBe(true);
+    expect(isKanaGameAnswerCorrect(cha, 'cya', false)).toBe(true);
   });
 
   it('rejects an incorrect romaji', () => {

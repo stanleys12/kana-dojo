@@ -99,16 +99,27 @@ export const kana: KanaGroup[] = [
   {
     kana: ['しゃ', 'しゅ', 'しょ'],
     romanji: ['sha', 'shu', 'sho'],
+    altRomanji: [['sya'], ['syu'], ['syo']],
     groupName: 'h.y.shy',
   },
   {
     kana: ['じゃ', 'じゅ', 'じょ'],
     romanji: ['ja', 'ju', 'jo'],
+    altRomanji: [
+      ['jya', 'zya'],
+      ['jyu', 'zyu'],
+      ['jyo', 'zyo'],
+    ],
     groupName: 'h.y.jy',
   },
   {
     kana: ['ちゃ', 'ちゅ', 'ちょ'],
     romanji: ['cha', 'chu', 'cho'],
+    altRomanji: [
+      ['tya', 'cya'],
+      ['tyu', 'cyu'],
+      ['tyo', 'cyo'],
+    ],
     groupName: 'h.y.chy',
   },
   {
@@ -234,16 +245,27 @@ export const kana: KanaGroup[] = [
   {
     kana: ['シャ', 'シュ', 'ショ'],
     romanji: ['sha', 'shu', 'sho'],
+    altRomanji: [['sya'], ['syu'], ['syo']],
     groupName: 'k.y.shy',
   },
   {
     kana: ['ジャ', 'ジュ', 'ジョ'],
     romanji: ['ja', 'ju', 'jo'],
+    altRomanji: [
+      ['jya', 'zya'],
+      ['jyu', 'zyu'],
+      ['jyo', 'zyo'],
+    ],
     groupName: 'k.y.jy',
   },
   {
     kana: ['チャ', 'チュ', 'チョ'],
     romanji: ['cha', 'chu', 'cho'],
+    altRomanji: [
+      ['tya', 'cya'],
+      ['tyu', 'cyu'],
+      ['tyo', 'cyo'],
+    ],
     groupName: 'k.y.chy',
   },
   {

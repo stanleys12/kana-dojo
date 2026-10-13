@@ -298,4 +298,58 @@ describe('isKanaInputAnswerCorrect', () => {
       }),
     ).toBe(true);
   });
+
+  it('accepts kunrei and IME spellings for yoon through the data-driven map', () => {
+    const dataMap = buildAltMapFromData();
+
+    expect(
+      isKanaInputAnswerCorrect({
+        inputValue: 'sya',
+        correctChar: 'しゃ',
+        targetChar: 'sha',
+        isReverse: false,
+        altRomanjiMap: dataMap,
+      }),
+    ).toBe(true);
+
+    expect(
+      isKanaInputAnswerCorrect({
+        inputValue: 'zyo',
+        correctChar: 'ジョ',
+        targetChar: 'jo',
+        isReverse: false,
+        altRomanjiMap: dataMap,
+      }),
+    ).toBe(true);
+
+    expect(
+      isKanaInputAnswerCorrect({
+        inputValue: 'syatyu',
+        correctChar: 'しゃちゅ',
+        targetChar: 'shachu',
+        isReverse: false,
+        altRomanjiMap: dataMap,
+        promptParts: ['しゃ', 'ちゅ'],
+        answerParts: ['sha', 'chu'],
+      }),
+    ).toBe(true);
+
+    expect(
+      isKanaInputAnswerCorrect({
+        inputValue: 'xya',
+        correctChar: 'しゃ',
+        targetChar: 'sha',
+        isReverse: false,
+        altRomanjiMap: dataMap,
+      }),
+    ).toBe(false);
+  });
+
+  it('keeps altRomanji index-aligned with kana in every group', () => {
+    kana.forEach(group => {
+      if (group.altRomanji) {
+        expect(group.altRomanji).toHaveLength(group.kana.length);
+      }
+    });
+  });
 });
